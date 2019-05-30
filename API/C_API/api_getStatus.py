@@ -41,7 +41,7 @@ class TrangThai:
     def deleteStatus(request):
         ma = request.POST.get('matt')
         delete = connections['DoThi'].cursor()
-        delete.execute("update sde.TrangThaiCX set MaTinhTrang = 9 where MaTinhTrang = %s ", (ma))
+        delete.execute("delete sde.TrangThaiCX where MaTinhTrang = %s (update sde.CAYXANH set MaTinhTrang = 8 where MaTinhTrang = %s) ", (ma))
         return JsonResponse({'success': '200'}, safe=False)
 
 
